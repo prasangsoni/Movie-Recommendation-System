@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import './App.css'; 
 import MovieCard from './MovieCard';
-
+import img from './assets/image.jpg'
 const App = () => {
   const [shows, setShows] = useState([]); 
   const [loading, setLoading] = useState(false);
@@ -52,10 +52,19 @@ const App = () => {
 
   return (
     <>
-    <div className="min-h-screen bg-gray-100">
-      <header className="bg-blue-600 text-white text-center p-6">
-        <h1 className="text-3xl font-bold">Movie-Recommendation-System</h1>
-      </header>
+    <div
+  className="min-h-screen"
+  style={{
+    backgroundImage: `url(${img})`,
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundAttachment: 'fixed', 
+  }}
+>
+<header className="bg-blue-600 text-white text-center p-6">
+  <h1 className="text-3xl font-bold">Movie-Recommendation-System</h1>
+</header>
 
       <div className="flex justify-center p-4">
         <form onSubmit={handleSearch} className="flex space-x-2">
@@ -76,26 +85,27 @@ const App = () => {
       </div>
 
       <main className="container mx-auto p-6">
-        {loading ? (
-          <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="text-center p-4 text-xl text-gray-700">Loading...</div>
-          </div>
-        ) : error ? (
-          <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="text-center p-4 text-xl text-red-500">{error}</div>
-          </div>
-        ) : shows.length > 0 ? (
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {shows.map((show, index) => (
-              <MovieCard key={index} show={show} /> 
-            ))}
-          </div>
-        ) : (
-          <div className="flex items-center justify-center min-h-screen bg-gray-100">
-            <div className="text-center p-4 text-xl text-gray-500">No movie found. Please try again.</div>
-          </div>
-        )}
-      </main>
+  {loading ? (
+    <div className="flex items-center justify-center min-h-screen bg-transparent">
+      <div className="text-center p-4 text-xl text-gray-700">Loading...</div>
+    </div>
+  ) : error ? (
+    <div className="flex items-center justify-center min-h-screen bg-transparent">
+      <div className="text-center p-4 text-xl text-red-500">{error}</div>
+    </div>
+  ) : shows.length > 0 ? (
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+      {shows.map((show, index) => (
+        <MovieCard key={index} show={show} />
+      ))}
+    </div>
+  ) : (
+    <div className="flex items-center justify-center min-h-screen bg-transparent bg-cover bg-center" >
+      <div className="text-center p-4 text-xl text-white bg-transparent">No movie found. Please try again.</div>
+    </div>
+  )}
+</main>
+
     </div>
     </>
   );

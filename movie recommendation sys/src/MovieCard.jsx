@@ -8,7 +8,7 @@ const MovieCard = ({ show }) => {
   
     return (
         <>
-      <div className="w-64 min-h-screen bg-white rounded-lg shadow-lg overflow-hidden mb-6 border border-gray-200 flex flex-col">
+      <div className="w-auto h-auto bg-white rounded-lg shadow-lg overflow-hidden mb-6 border border-gray-200 flex flex-col">
         <img
           className="w-full h-48 object-cover"
           src={show.imageSet?.verticalPoster?.w480 || 'https://via.placeholder.com/480x640'}
