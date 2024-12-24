@@ -1,6 +1,8 @@
 import React from "react";
 const MovieCard = ({ show }) => {
-    const genres = show.genres ? show.genres.join(', ') : 'N/A';
+    const genres = show.genres && show.genres.length > 0
+    ? show.genres.map((genre) => genre.id).join(', ') // or use any field like genre.name
+    : 'N/A';
     const directors = show.directors && show.directors.length > 0 ? show.directors.join(', ') : 'N/A';
     const cast = show.cast && show.cast.length > 0 ? show.cast.join(', ') : 'N/A';
   
@@ -21,7 +23,7 @@ const MovieCard = ({ show }) => {
             <p><strong className="font-bold text-gray-900">Cast:</strong> {cast}</p>
             <p><strong className="font-bold text-gray-900">Release Year:</strong> {show.releaseYear || 'N/A'}</p>
             <p><strong className="font-bold text-gray-900">Runtime:</strong> {show.runtime || 'N/A'} minutes</p>
-            <p><strong className="font-bold text-gray-900">Rating:</strong> {show.rating || 'N/A'}</p>
+            <p><strong className="font-bold text-gray-900">Rating:</strong> {show.rating/10 || 'N/A'}</p>
           </div>
         </div>
       </div>
