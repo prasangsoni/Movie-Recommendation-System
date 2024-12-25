@@ -10,7 +10,7 @@ const MovieCard = ({ show }) => {
         <>
       <div className="w-auto h-auto bg-white rounded-lg shadow-lg overflow-hidden mb-6 border border-gray-200 flex flex-col">
         <img
-          className="w-full h-48 object-cover"
+          className="w-full h-full object-contain" 
           src={show.imageSet?.verticalPoster?.w480 || 'https://via.placeholder.com/480x640'}
           alt={show.title}
         />
